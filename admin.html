@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>管理員功能 - 學生資料管理系統</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .section {
+      display: none;
+      margin-top: 1rem;
+    }
+    .menu li {
+      cursor: pointer;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body onload="initAdmin()">
+  <h1>管理員功能</h1>
+
+<button id="showDepartmentsBtn">開啟科系管理</button>
+<button id="showStudentsBtn">開啟學生管理</button>
+<!-- <button id="showCourseBtn">開啟課程管理</button> -->
+
+<div id="departmentSection" class="section" style="display: none;">
+  <h3>科系管理</h3>
+  <input type="text" id="deptName" placeholder="科系名稱" />
+  <button onclick="addDept()">新增科系</button>
+
+  <table border="1" style="margin-top: 10px; width: 100%;">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="departmentsTable"></tbody>
+  </table>
+</div>
+
+  <div id="studentSection" class="section">
+    <h3>學生管理</h3>
+    <input type="text" id="s_Id" placeholder="學生學號" />
+    <input type="text" id="s_name" placeholder="學生姓名" />
+    <input type="text" id="s_gender" placeholder="學生性別" />
+    <input type="text" id="s_birth" placeholder="學生生日" />
+    <input type="text" id="s_phone" placeholder="聯絡電話" />
+    <input type="text" id="s_mail" placeholder="電子郵件" />
+    <input type="text" id="s_address" placeholder="地址" />
+    <select id="s_deptId"><option value="">請選擇科系</option></select>
+    <button onclick="addStudent()">新增學生</button>
+
+    <table border="1" style="margin-top: 10px; width: 100%;">
+      <thead>
+        <tr>
+          <th>學號</th>
+          <th>姓名</th>
+          <th>性別</th>
+          <th>生日</th>
+          <th>電話</th>
+          <th>電子郵件</th>
+          <th>地址</th>
+          <th>科系</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="studentsTable"></tbody>
+    </table>
+  </div>
+
+
+  <script src="admin.js"></script>
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll(".section");
+      sections.forEach((sec) => {
+        sec.style.display = "none";
+      });
+      document.getElementById(sectionId).style.display = "block";
+    }
+  </script>
+</body>
+</html>

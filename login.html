@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>登入 - 學生資料管理系統</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>學生資料管理系統 - 登入</h1>
+
+  <div id="login">
+    <h2>登入</h2>
+    <input type="text" id="username" placeholder="帳號" />
+    <input type="password" id="password" placeholder="密碼" />
+    <select id="role">
+      <option value="student">學生</option>
+      <option value="admin">管理員</option>
+    </select>
+    <button onclick="login()">登入</button>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
