@@ -68,6 +68,33 @@ async function refreshDepartments() {
       alert("讀取科系資料失敗");
     });
 }
+
+//新增科系
+function addDept() {
+  const name = document.getElementById("deptName").value.trim();
+  if (!name) return alert("請輸入科系名稱");
+
+  fetch("http://localhost:3000/department", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ department_name: name }),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("新增科系失敗");
+      return res.json();
+    })
+    .then((data) => {
+      console.log("新增成功：", data);
+      document.getElementById("deptName").value = "";
+      refreshDepartments(); // 重新渲染科系表格
+    })
+    .catch((err) => {
+      console.error("錯誤：", err);
+      alert("新增科系時發生錯誤：" + err.message);
+    });
+}
 function loadDepartmentsForStudentForm() {
   fetch("http://localhost:3000/department")
     .then((res) => res.json())
